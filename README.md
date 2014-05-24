@@ -27,20 +27,19 @@ Note: The $db variable is the database connection across the whole site.
 
 <h6>Creating a Table (with columns)</h6>
 <pre>
-<?php
 //Loads all the modules and smarty template
 require 'init.php';
 //The databasing class
 $query = new database();
 
 $columns = array(
-				'name' => array("type" => "VARCHAR",
-					 		  "length" => "(60)" //Encapsulate your number in quotes (functionality with TIMESTAMP)
-						     ),
-				'value' => array("type" => "INT",
-					 		  "length" => "(60) DEFAULT NULL" //Makes the column default value null. Does not break the script. 
-						     ),
-				 );
+		'name' => array("type" => "VARCHAR",
+		                "length" => "(60)" //Encapsulate your number in quotes
+				),
+		'value' => array("type" => "INT",
+		 	         "length" => "(60) DEFAULT NULL" //Makes the column default value null.
+				 ),
+		);
 
 
 $query->table_create($db, "yourtablename", $columns);
@@ -55,7 +54,6 @@ Note: The primary key of the array defines the column name.
 
 From now on, assume that the database class has been activated under $query
 <pre>
-<?php
 $items = array(
           'name' => 'John Doe',
           'value' => 'healthy'
@@ -69,7 +67,6 @@ This is a fairly easy function to use. again, basically the same concept as abov
 <h6>Listing out Columns</h6>
 The only big use for this is if your expanding upon these functions and you need all the columns of a table to do something.
 <pre>
-<?php
 $response = $query->get_columns($db, "sometable");
 echo $response['raw']; //Array of the data
 echo $response['text']; //If you need it for development purposes and readablity.
@@ -80,8 +77,23 @@ This is extremely easy. Lets move onto user management.
 <h4>Users & Administrators</h4>
 This section creates a standard through out the website of all interactions between the user and database. Authentication, registration, and setting up the inital user table are a couple of the vast functionalities.
 
+<h6>Creating the Initial User Table</h6>
+The system has specific settings in the table and columns in order to work in unison. You are free to add more columns but I strongly suggest not to change the initial columns in the accounts table unless you know what you are doing.
+<pre>
+require 'init.php';
+$system = new admin();
+if($system->create_user_table($db)){
+    echo "Accounts table setup.";
+}
+</pre>
+This is a self supplied function, meaning that everything that is needed (other than the database connection) is inside it. If you want to do any customization, look in libs/custom/minesql.users.class.php
 
 
+
+TODO
+
+checkLogin()
+register()
 
 
 
