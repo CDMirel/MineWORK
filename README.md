@@ -1,7 +1,7 @@
 MineWORK
 ========
 
-  A VERY lightwieght "framework" that uses the SMARTY templating system with custom libraries for generic website tasks such as logging in, creating tables, inserting data, and more tasks that don't need to be recoded time after time.
+  A VERY lightwieght "framework" that uses the SMARTY templating system with custom libraries for generic website tasks such as logging in, creating tables, inserting data, generating payment gateways, and more tasks that don't need to be recoded time after time.
 
   This project doesn't aim to try to outshine big frameworks - rather be useful for small or medium sized projects that demand speed, and usability.
 
