@@ -1,0 +1,1 @@
+This is the default bootstrap theme with a package of all the pre-made templates.
